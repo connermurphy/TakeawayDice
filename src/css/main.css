@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+.wrapper {
+  position: relative;
+}
+.wrapper > #wrapper--inner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+.wrapper > .wrapper--inner-content {
+  position: relative;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  height: 100vh;
+  z-index: 10;
+}
+
+.content--title {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  padding: 2em;
+}
+.content--title .content--title-inner {
+  flex: 100%;
+  align-self: center;
+}
+.content--title .content--title-inner > h1 {
+  font-size: 3rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+.content--title .content--title-inner > h4 {
+  font-size: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.content--dice > .content--dice-inner {
+  display: flex;
+  flex-direction: row;
+  -ms-flex-direction: row;
+  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  text-align: center;
+  padding: 2em 0 5em 0;
+  height: 100%;
+}
+
+#takeaway--value {
+  flex: 100%;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 7rem;
+  text-transform: uppercase;
+}
+
+#button--spin-wrapper {
+  align-self: flex-end;
+  flex: 100%;
+}
+
+.button--spin {
+  background: #FFD449;
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  border: solid 1px #FFD449;
+  padding: 0.25em 1.75em;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  color: #fff;
+  transition: background 0.15s linear, border-color 0.15s linear;
+  -webkit-transition: background 0.15s linear, border-color 0.15s linear;
+}
+.button--spin:hover {
+  cursor: pointer;
+  background: #F9A620;
+  border-color: #F9A620;
+}
+
+@media screen and (max-width: 576px) {
+  .content--title .content--title-inner > h1 {
+    font-size: 2.75rem;
+  }
+  .content--title .content--title-inner > h4 {
+    font-size: 1.25rem;
+  }
+
+  #takeaway--value {
+    font-size: 5rem;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
