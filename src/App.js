@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 import "./css/main.css";
 
@@ -6,7 +6,7 @@ function fetchChoice() {
   const choices = [
     {
 
-      title : "chinese",
+      title: "chinese",
       background: "./img/chinese-background.jpg"
     },
     {
@@ -22,52 +22,75 @@ function fetchChoice() {
       background: "./img/pizza-background.jpg"
     }
   ];
+
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function displayChoice() {
+export default class App extends React.Component {
 
-  let choice = fetchChoice();
-  
-  let takeawayValue = document.getElementById("takeaway--value");
+  constructor(props) {
+    super(props);
 
-  takeawayValue.innerText = choice.title;
-  document.getElementsByTagName("body")[0].style.backgroundImage = `url(${choice.background})`
+    let initChoice = fetchChoice();
 
-}
+    this.state = {
+      takeawayValue: initChoice.title,
+      backgroundValue: initChoice.background
+    };
 
-export default function App() {
+    this.displayChoice = this.displayChoice.bind(this);
+  }
 
-  useEffect(displayChoice)
+  componentDidMount() {
+    this.displayChoice();
+  }
 
-  return (
+  displayChoice() {
 
-    <div className="wrapper">
+    let choice = fetchChoice();
 
-      <div id="wrapper--inner-overlay"></div>
+    this.setState(
+      {
+        takeawayValue: choice.title,
+        backgroundValue: choice.background
+      });
 
-      <div className="wrapper--inner-content">
+  }
 
-        <div className="content--title">
-          <div className="content--title-inner">
-            <h1>takeaway dice</h1>
-            <h4>What will you be having tonight</h4>
-          </div>
-        </div>
+  render() {
 
-        <div className="content--dice">
-          <div className="content--dice-inner">
-            <div id="takeaway--value">
+    let { takeawayValue, backgroundValue } = this.state;
+
+    return (
+
+      <div className="wrapper" style={{ backgroundImage: `url(${backgroundValue})` }}>
+
+        <div id="wrapper--inner-overlay"></div>
+
+        <div className="wrapper--inner-content">
+
+          <div className="content--title">
+            <div className="content--title-inner">
+              <h1>takeaway dice</h1>
+              <h4>What will you be having tonight</h4>
             </div>
-            <div id="button--spin-wrapper">
-              <button type="button" className="button--spin" onClick={displayChoice}>Spin</button>
+          </div>
+
+          <div className="content--dice">
+            <div className="content--dice-inner">
+              <div id="takeaway--value">
+                {takeawayValue}
+              </div>
+              <div id="button--spin-wrapper">
+                <button type="button" className="button--spin" onClick={this.displayChoice}>Spin</button>
+              </div>
             </div>
           </div>
+
         </div>
 
       </div>
 
-    </div>
-
-  );
+    );
+  }
 }

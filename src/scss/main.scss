@@ -27,9 +27,6 @@ html, body {
 
 body {
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
     color: $mainColour;
 }
 
@@ -37,6 +34,9 @@ body {
 
     position: relative;    
     min-height: 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     > #wrapper--inner-overlay {
 
